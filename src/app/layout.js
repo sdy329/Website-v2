@@ -1,10 +1,14 @@
 import '@/app/main.css';
 import '@/app/personal.css';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata = {
   title: "Spencer Yates Portfolio",
   charset: "utf-8",
-  viewport: "width=device-width, initial-scale=1.0",
   openGraph: {
     locale: "en_US",
     site_name: "Spencer Yates",
