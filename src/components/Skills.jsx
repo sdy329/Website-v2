@@ -11,6 +11,8 @@ export default async function Skills() {
         return { error };
     }
 
+    const { data: resume } = await supabase.storage.from('personal-files').getPublicUrl('SYates-Resume.pdf');
+
     return (
         <section id="skills" className="lg:mb-20 mb-10">
             <div className="sticky top-0 z-20 -mx-6 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:mb-4">
@@ -33,7 +35,7 @@ export default async function Skills() {
                 </div>
             </div>
             <div>
-                <a href="./SYates-Resume-2024.pdf">
+                <a href={resume['publicUrl']}>
                     <h2 className="text-sm uppercase tracking-widest text-slate-200 transition-all hover:font-bold">View Resume ➔</h2>
                 </a>
             </div>

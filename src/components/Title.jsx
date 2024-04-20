@@ -1,10 +1,14 @@
+import { createClient } from "@/utils/supabase/server"
 
+export default async function Title() {
+    const supabase = createClient();
 
-export default function Title() {
+    const { data } = await supabase.storage.from('personal-files').getPublicUrl('profile.png');
+
     return (
         <div className="grid justify-center lg:justify-start text-center lg:text-start">
             <span className="lg:frame mx-auto lg:ml-28">
-                <img src="./profile.png" className="block h-36" />
+                <img src={data['publicUrl']} className="block h-36" />
             </span>
             <h1 className="text-slate-200 font-semibold text-5xl sm:text-6xl tracking-tighter sm:tracking-tight mb-3">Spencer Yates</h1>
             <h2 className="text-slate-200 font-semibold text-xl sm:text-2xl mb-3">Software Engineering Student</h2>
