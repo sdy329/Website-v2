@@ -20,27 +20,32 @@ export default async function ProjectDetails({ searchParams: params }) {
     var description = '';
     var languages = '';
     var link = '';
+    var banner = '';
+    var square = '';
 
 
     if (params.id === 'new') {
     } else {
-        const { data, error } = await supabase
+        const { data: projects, error } = await supabase
             .from('projects')
             .select()
             .eq('id', params.id)
             .single();
 
-        const { bannerImg, error2 } = await supabase.storage.from('banners').download(data.banner);
-        const { squareImg, error3 } = await supabase.storage.from('squares').download(data.square);
 
-        if (!data) {
+        const { data: bannerImg } = await supabase.storage.from('banners').getPublicUrl(projects.banner);
+        const { data: squareImg } = await supabase.storage.from('squares').getPublicUrl(projects.square);
+
+        if (!projects) {
             return redirect(".");
         }
 
-        name = data.name;
-        description = data.description;
-        languages = data.languages;
-        link = data.link;
+        name = projects.name;
+        description = projects.description;
+        languages = projects.languages;
+        link = projects.link;
+        banner = bannerImg['publicUrl'];
+        square = squareImg['publicUrl'];
     }
 
     const editProject = async (formData) => {
@@ -194,9 +199,50 @@ export default async function ProjectDetails({ searchParams: params }) {
                             )}
                         </form>
                     </div>
-                    <div id="content" className="pt-4 lg:pt-auto lg:w-1/2 lg:py-24">
-
-                        Div 2
+                    <div id="content" className="pt-4 lg:pt-auto lg:w-1/2 lg:py-24 flex flex-col justify-center gap-10">
+                        <div>
+                            <h1 className="text-slate-200 font-semibold text-5xl sm:text-6xl tracking-tighter sm:tracking-tight mb-3 text-center">Banner Example</h1>
+                            <div className="w-full flex justify-center">
+                                <a href={link} target="_blank">
+                                    <div className="flex relative h-60">
+                                        <picture>
+                                            <source media="(min-width: 768px)" srcSet={banner} />
+                                            <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center opacity-95 transition-all motion-reduce:transition-none" src={square} />
+                                        </picture>
+                                        <div className="px-4 py-2 min-[375px]:py-4 sm:px-8 sm:py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-95 lg:opacity-0 hover:opacity-95 transition-all motion-reduce:transition-none">
+                                            <h2 className="tracking-wide text-sm title-font font-medium text-cyan-600 mb-1">
+                                                {languages}
+                                            </h2>
+                                            <h1 className="title-font text-lg font-medium text-slate-200 mb-3">
+                                                {name}
+                                            </h1>
+                                            <p className="leading-relaxed text-slate-400">{description}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 className="text-slate-200 font-semibold text-5xl sm:text-6xl tracking-tighter sm:tracking-tight mb-3 text-center">Square Example</h1>
+                            <div className="w-full flex justify-center">
+                                <a href={link} target="_blank">
+                                    <div className="flex relative h-60">
+                                        <picture>
+                                            <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center opacity-95 transition-all motion-reduce:transition-none" src={square} />
+                                        </picture>
+                                        <div className="px-4 py-2 min-[375px]:py-4 sm:px-8 sm:py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-95 hover:opacity-95 transition-all motion-reduce:transition-none">
+                                            <h2 className="tracking-wide text-sm title-font font-medium text-cyan-600 mb-1">
+                                                {languages}
+                                            </h2>
+                                            <h1 className="title-font text-lg font-medium text-slate-200 mb-3">
+                                                {name}
+                                            </h1>
+                                            <p className="leading-relaxed text-slate-400">{description}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
