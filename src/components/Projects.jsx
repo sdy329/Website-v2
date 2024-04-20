@@ -1,7 +1,22 @@
-import projectArray from "@/components/ProjectArray"
+import { createClient } from "@/utils/supabase/server";
 
-export default function Projects() {
-    const projectsArray = projectArray();
+export default async function Projects() {
+    const supabase = createClient();
+    const { data: projects, error } = await supabase
+        .from('projects')
+        .select()
+        .order('id', { ascending: true });
+
+    if (error) {
+        return { error };
+    }
+
+    for (var i = 0; i < projects.length; i++) {
+        const { data: bannerImg } = await supabase.storage.from('banners').getPublicUrl(projects[i].banner);
+        const { data: squareImg } = await supabase.storage.from('squares').getPublicUrl(projects[i].square);
+        projects[i].banner = bannerImg['publicUrl'];
+        projects[i].square = squareImg['publicUrl'];
+    }
 
     return (
         <section id="projects" className="lg:mb-20 mb-10">
@@ -10,7 +25,7 @@ export default function Projects() {
             </div>
             <div>
                 <ul>
-                    {projectsArray.map((project) => (
+                    {projects.map((project) => (
                         <li className="mb-10" key={project.id}>
                             <a href={project.link} target="_blank">
                                 <div className="flex relative h-60">
