@@ -5,7 +5,7 @@ import ProjectsAdmin from "@/components/ProjectsAdmin";
 import '@/app/main.css';
 import '@/app/personal.css';
 
-export default async function Dashboard() {
+export default async function Projects() {
     const supabase = createClient();
 
     const {

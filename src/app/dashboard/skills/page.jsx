@@ -5,7 +5,7 @@ import SkillsAdmin from "@/components/SkillsAdmin";
 import '@/app/main.css';
 import '@/app/personal.css';
 
-export default async function Dashboard() {
+export default async function Skills() {
     const supabase = createClient();
 
     const {
