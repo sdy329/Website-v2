@@ -20,6 +20,8 @@ export default async function ProjectDetails({ searchParams: params }) {
     var description = '';
     var languages = '';
     var link = '';
+    var bannerName = '';
+    var squareName = '';
     var banner = '';
     var square = '';
 
@@ -44,6 +46,8 @@ export default async function ProjectDetails({ searchParams: params }) {
         description = projects.description;
         languages = projects.languages;
         link = projects.link;
+        bannerName = projects.banner;
+        squareName = projects.square;
         banner = bannerImg['publicUrl'];
         square = squareImg['publicUrl'];
     }
@@ -51,35 +55,69 @@ export default async function ProjectDetails({ searchParams: params }) {
     const editProject = async (formData) => {
         "use server";
 
-        const email = formData.get("email");
-        const password = formData.get("password");
         const supabase = createClient();
+        const formName = formData.get('name');
+        const formDescription = formData.get('description');
+        const formLanguages = formData.get('languages');
+        const formLink = formData.get('link');
+        const bannerFileName = formData.get('banner').name;
+        const squareFileName = formData.get('square').name;
 
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
+        const { error } = await supabase.from('projects').update({
+            name: formName,
+            description: formDescription,
+            languages: formLanguages,
+            link: formLink,
+            banner: bannerFileName,
+            square: squareFileName
+        }).eq('id', params.id);
+
+        await supabase.storage.from('banners').upload(bannerFileName, formData.get('banner'), { upsert: true, });
+        await supabase.storage.from('squares').upload(squareFileName, formData.get('square'), { upsert: true, });
+
 
         if (error) {
             return redirect("./details?message=Could not edit project");
         }
+
+        return redirect(".");
     };
 
     const createProject = async (formData) => {
         "use server";
 
-        const email = formData.get("email");
-        const password = formData.get("password");
         const supabase = createClient();
+        const formName = formData.get('name');
+        const formDescription = formData.get('description');
+        const formLanguages = formData.get('languages');
+        const formLink = formData.get('link');
+        const bannerFileName = formData.get('banner').name;
+        const squareFileName = formData.get('square').name;
 
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
+        const { error } = await supabase.from('projects').insert({
+            name: formName,
+            description: formDescription,
+            languages: formLanguages,
+            link: formLink,
+            banner: bannerFileName,
+            square: squareFileName
         });
 
-        if (error) {
-            return redirect("./details?message=Could not create project");
+        const { data: bannerData, error: bannerError } = await supabase.storage.from('banners').upload(bannerFileName, formData.get('banner'));
+        if (bannerError) {
+            console.log(bannerError);
         }
+
+        const { data: squareData, error: squareError } = await supabase.storage.from('squares').upload(squareFileName, formData.get('square'));
+        if (squareError) {
+            console.log(bannerError);
+        }
+
+        if (error) {
+            return redirect("./details?message=Could not edit project");
+        }
+
+        return redirect(".");
     };
 
     const deleteProject = async (formData) => {
@@ -88,6 +126,8 @@ export default async function ProjectDetails({ searchParams: params }) {
         const supabase = createClient();
 
         const { error } = await supabase.from('projects').delete().eq('id', params.id);
+        await supabase.storage.from('banners').remove([bannerName]);
+        await supabase.storage.from('squares').remove([squareName]);
 
         if (error) {
             return redirect("./details?message=Could not create project");
@@ -165,7 +205,6 @@ export default async function ProjectDetails({ searchParams: params }) {
                                 accept="image/*"
                                 required
                             />
-
                             <label className="text-md" htmlFor="square">
                                 Square Image
                             </label>
