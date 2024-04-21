@@ -142,7 +142,7 @@ export default async function SocialsDetails({ searchParams: params }) {
                                     className="bg-slate-200 rounded-md px-4 py-4 text-slate-600 text-lg mb-2"
                                     pendingText="Deleting..."
                                 >
-                                    Delete Project
+                                    Delete Social
                                 </SubmitButton>
                             )}
                             {params?.message && (
