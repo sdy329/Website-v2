@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@supabase/ssr": "^0.3.0",
@@ -19,6 +20,7 @@
     "react-tooltip": "^5.26.3"
   },
   "devDependencies": {
+    "cypress": "^13.8.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "postcss": "^8",

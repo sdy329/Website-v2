@@ -21,12 +21,12 @@ export default async function Skills() {
             <div className="container mx-auto">
                 <div className="flex flex-wrap sm:mx-auto sm:mb-2">
                     {skills.map((skill) => (
-                        <div key={skill.id} className="p-2 sm:w-1/2 w-full">
+                        <div id="skill" key={skill.id} className="p-2 sm:w-1/2 w-full">
                             <div className="bg-gray-800 rounded flex p-4 h-full items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="text-cyan-600 h-10 w-10 mr-4" viewBox="0 0 500 500">
                                     <path d={skill.svg} />
                                 </svg>
-                                <span className="title-font font-medium text-white">
+                                <span id="skillName" className="title-font font-medium text-white">
                                     {skill.name}
                                 </span>
                             </div>
@@ -35,7 +35,7 @@ export default async function Skills() {
                 </div>
             </div>
             <div>
-                <a href={resume['publicUrl']}>
+                <a id="resume" href={resume['publicUrl']} target="_blank">
                     <h2 className="text-sm uppercase tracking-widest text-slate-200 transition-all hover:font-bold">View Resume ➔</h2>
                 </a>
             </div>

@@ -12,7 +12,7 @@ export default async function Socials() {
     }
 
     return (
-        <ul className="mt-4 flex justify-center lg:justify-start items-center">
+        <ul id="socialMedia" className="mt-4 flex justify-center lg:justify-start items-center">
             {socials.map((social, i, { length }) => {
                 var classes = ""
                 if (length - 1 === i) {

@@ -26,21 +26,21 @@ export default async function Projects() {
             <div>
                 <ul>
                     {projects.map((project) => (
-                        <li className="mb-10" key={project.id}>
+                        <li id="project" className="mb-10" key={project.id}>
                             <a href={project.link} target="_blank">
                                 <div className="flex relative h-60">
                                     <picture>
-                                        <source media="(min-width: 768px)" srcSet={project.banner} />
-                                        <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center opacity-95 transition-all motion-reduce:transition-none" src={project.square} />
+                                        <source id="projectBanner" media="(min-width: 768px)" srcSet={project.banner} />
+                                        <img alt="gallery" id="projectSquare" className="absolute inset-0 w-full h-full object-cover object-center opacity-95 transition-all motion-reduce:transition-none" src={project.square} />
                                     </picture>
                                     <div className="px-4 py-2 min-[375px]:py-4 sm:px-8 sm:py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-95 lg:opacity-0 hover:opacity-95 transition-all motion-reduce:transition-none">
-                                        <h2 className="tracking-wide text-sm title-font font-medium text-cyan-600 mb-1">
+                                        <h2 id="projectLanguages" className="tracking-wide text-sm title-font font-medium text-cyan-600 mb-1">
                                             {project.languages}
                                         </h2>
-                                        <h1 className="title-font text-lg font-medium text-slate-200 mb-3">
-                                            {project.title}
+                                        <h1 id="projectName" className="title-font text-lg font-medium text-slate-200 mb-3">
+                                            {project.name}
                                         </h1>
-                                        <p className="leading-relaxed text-slate-400">{project.description}</p>
+                                        <p id="projectDescription" className="leading-relaxed text-slate-400">{project.description}</p>
                                     </div>
                                 </div>
                             </a>
