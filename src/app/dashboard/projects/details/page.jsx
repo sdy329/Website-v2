@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import BackButton from "@/components/BackButton";
-import { SubmitButton } from "./submit-button";
+import { SubmitButton } from "@/components/submit-button";
 import '@/app/main.css';
 import '@/app/personal.css';
 
