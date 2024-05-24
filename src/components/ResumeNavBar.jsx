@@ -25,7 +25,7 @@ export default function ResumeNavBar({ link }) {
                     </svg>{" "}
                     Home
                 </Link>
-                <a href={link} download="SYates-Resume.pdf" className="justify-self-end">
+                <a href={link} download="SYates-Resume.pdf" className="justify-self-end" target="_blank">
                     <svg
                         className="lg:h-10 lg:w-10 sm:h-8 sm:w-8 h-6 w-6 text-slate-200"
                         viewBox="0 0 24 24"
