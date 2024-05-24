@@ -33,7 +33,7 @@ export default async function Skills() {
                 </div>
             </div>
             <div>
-                <a id="resume" href="resume" target="_blank">
+                <a id="resume" href="resume">
                     <h2 className="text-sm uppercase tracking-widest text-slate-200 transition-all hover:font-bold">View Resume ➔</h2>
                 </a>
             </div>
