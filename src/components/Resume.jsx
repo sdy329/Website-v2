@@ -3,7 +3,7 @@ export default function Resume({ link }) {
     return (
         <div id="Resume" className="flex flex-col justify-center items-center h-full text-center">
             <object
-                data={+ "#toolbar=0&navpanes=0"}
+                data={link + "#toolbar=0&navpanes=0"}
                 type="application/pdf"
                 className="w-full lg:w-7/12 max-w-screen-xl max-h-[90vh] md:h-[90vh] h-[75vh] border-none"
             >
