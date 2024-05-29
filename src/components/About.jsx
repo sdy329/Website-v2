@@ -14,7 +14,7 @@ export default function About() {
                     <li>2023: Finished 3<sup>rd</sup> place at the VEX World Championship.</li>
                     <li>Represented the VEX Robotics Competition when addressing various companies.</li>
                 </ul>
-                <p className="mb-4">Currently I am finishing my degree at Northern Kentucky University, on track to graduate in Spring 2024. Additionally, I have an internship as a service technician at <a href="https://www.gbs-inc.com" target="_blank" className="text-slate-200 hover:text-cyan-600 transition-colors">Global Business Solutions</a>.</p>
+                <p className="mb-4">I graduated from Northern Kentucky University in Spring 2024 with a Bachelor of Science in Applied Software Engineering. During that time I held an internship as a service technician at <a href="https://www.gbs-inc.com" target="_blank" className="text-slate-200 hover:text-cyan-600 transition-colors">Global Business Solutions</a>.</p>
                 <p>In my free time, I enjoy refereeing for a few VEX Robotics tournaments (High School), hiking, and cheering on my favorite soccer teams.</p>
             </div>
         </section >
