@@ -14,7 +14,7 @@ export const metadata = {
     site_name: "Spencer Yates",
     type: "website",
     title: "Spencer Yates",
-    description: "Spencer Yates is a software engineering student at Northern Kentucky University looking to build digital experiences for the future.",
+    description: "Spencer Yates is a software engineer looking to build digital experiences for the future.",
     url: "https://www.sdy329.com"
   },
 };
