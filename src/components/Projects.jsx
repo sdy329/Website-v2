@@ -49,7 +49,7 @@ export default async function Projects() {
                 </ul>
             </div>
             <div>
-                <a href="https://apps.sdy329.com/" target="_blank">
+                <a href="https://apps.sdy329.com/">
                     <h2 className="text-sm uppercase tracking-widest text-slate-200 transition-all hover:font-bold">View All Projects ➔</h2>
                 </a>
             </div>
