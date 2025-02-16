@@ -12,10 +12,11 @@ export default function About() {
                     <li>2019: Founded an <a href="https://www.instagram.com/blizzardalliance/" target="_blank" className="text-slate-200 hover:text-cyan-600 transition-colors">international robotics alliance</a>.</li>
                     <li>2020: Created the first <a href="https://www.nku.edu/academics/informatics/beyond/student-organizations/nukerobotics.html" target="_blank" className="text-slate-200 hover:text-yellow-400 transition-colors">competitive robotics program at Northern Kentucky University</a>.</li>
                     <li>2023: Finished 3<sup>rd</sup> place at the VEX World Championship.</li>
-                    <li>Represented the VEX Robotics Competition when addressing various companies.</li>
+                    <li>2024: Served as Head Referee for the Grand Finals of the High School VEX World Championship</li>
+                    <li>Represented the VEX Robotics Competition in discussions with companies to promote STEM education and sponsorship opportunities.</li>
                 </ul>
-                <p className="mb-4">I graduated from Northern Kentucky University in Spring 2024 with a Bachelor of Science in Applied Software Engineering. During that time I held an internship as a service technician at <a href="https://www.gbs-inc.com" target="_blank" className="text-slate-200 hover:text-cyan-600 transition-colors">Global Business Solutions</a>.</p>
-                <p>In my free time, I enjoy refereeing for a few VEX Robotics tournaments (High School), hiking, and cheering on my favorite soccer teams.</p>
+                <p className="mb-4">I graduated from Northern Kentucky University in Spring 2024 with a Bachelor of Science in Applied Software Engineering. I am currently a Front-End Software Engineer at <a href="https://www.53.com" target="_blank" className="text-green-500 hover:text-blue-800 transition-colors">Fifth Third Bank</a>.</p>
+                <p>In my free time, I enjoy refereeing for a few VEX Robotics tournaments (Middle School, High School, and Collegiate), hiking, and cheering on my favorite soccer teams.</p>
             </div>
         </section >
     )
